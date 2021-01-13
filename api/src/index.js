@@ -5,7 +5,7 @@ const md5 = require('md5');
 const jwtToken = require('jsontokens')
 
 
-const ConversationHelpers = require('./helper/ConversationHelpers');
+// const ConversationHelpers = require('./helper/ConversationHelpers');
 const DatabaseHelper = require('./helper/DatabaseHelper');
 const InitialiseDBHelpers = require('./helper/InitialiseDBHelpers')
 const UUIDHelper = require('./helper/UuidHelpers');
@@ -199,7 +199,7 @@ app.delete('/question/:uuid', AuthHelper.tokenValidator, async (req, res) => {
 })
 
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(process.env.PORT || 3000, () => console.log(`Listening on port ${process.env.PORT || 3000}`));
+  app.listen(process.env.PORT || 3001, () => console.log(`Listening on port ${process.env.PORT || 3001}`));
 }
 
 module.exports = app
