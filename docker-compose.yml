@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  api:
+    container_name: dev_api
+    build: './api'
+    environment:
+      PG_CONNECTION_STRING: postgres://example:example@dev_store:5432/test
+    ports:
+      - 3000:3000 # [local]:[exposed]
+    volumes:
+      - ./api/src:/workdir/src
+
+  db:
+    container_name: dev_store
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: example
+      POSTGRES_DB: test
+      POSTGRES_HOST_AUTH_METHOD: 
+    ports:
+      - 5432:5432
