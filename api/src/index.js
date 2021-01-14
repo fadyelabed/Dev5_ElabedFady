@@ -64,5 +64,45 @@ app.get('/join', async (req, res) => {
 if (process.env.NODE_ENV !== 'test') {
   app.listen(process.env.PORT || 3001, () => console.log(`Listening on port ${process.env.PORT || 3001}`));
 }
+async function initialiseTables() {
+  await pg.schema.hasTable('gerechten').then(async (exists) => {
+    if (!exists) {
+      await pg.schema
+        .createTable('gerechten', (table) => {
+          table.increments();
+          table.uuid('uuid');
+          table.string('gerechten');
+          table.string('ingredienten');
+          table.string('keuken');
+          table.timestamps(true, true);
+        })
+        .then(async () => {
+          console.log('created table gerechten');
+
+        });
+
+    }
+  });
+  await pg.schema.hasTable('keukens').then(async (exists) => {
+    if (!exists) {
+      await pg.schema
+        .createTable('keukens', (table) => {
+          table.increments().primary();
+          table.uuid('uuid');
+          table.string('italiaans');
+          table.string('amerikaans');
+          table.string('indisch');
+          table.string('japans');
+          table.timestamps(true, true);
+        })
+        .then(async () => {
+          console.log('created table keukens');
+
+        });
+
+    }
+  });
+}
+initialiseTables()
 
 module.exports = app
