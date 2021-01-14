@@ -56,7 +56,7 @@ app.post('/gerechten-add', async (req, res) => {
   const uuid = Helpers.generateUUID();
   const result = await pg
 
-    .insert({ uuid, gerechten: 'Pizza', ingredienten: 'deeg, tomaat, basilicum, mozzarella', keuken: "Italiaans" },)
+    .insert({ uuid, gerechten: 'Kapsalon', ingredienten: 'pita, mayo, sla, tomaat, uien, wortels, frietjes, kaas', keuken: "Nederlands" },)
     .table('gerechten')
     .returning('*')
     .then((res) => {
@@ -77,6 +77,16 @@ app.delete('/gerechten-delete/:uuid', async (req, res) => {
     });
   console.log(result);
   res.send(result);
+});
+
+app.get('/gerechten/:uuid', async (req, res) => {
+  const result = await pg
+    .select(['uuid', 'gerechten', 'ingredienten', 'keuken', 'created_at','updated_at'])
+    .from('gerechten')
+    .where({ uuid: req.params.uuid });
+  res.json({
+    res: result,
+  });
 });
 
 if (process.env.NODE_ENV !== 'test') {
