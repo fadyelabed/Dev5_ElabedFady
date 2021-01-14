@@ -45,7 +45,20 @@ app.get('/join', async (req, res) => {
 
 })
 
-
+// /**
+// * @param
+// * @returns
+// */
+// app.get('/recept/:uuid', async (req, res) => {
+//   await DatabaseHelper
+//     .table('recepten')
+//     .join('categorisatie', DatabaseHelper.raw('recepten.categorisatie_id::varchar'), DatabaseHelper.raw('categorisatie.uuid::varchar'))
+//     .select('categorisatie.*', 'recepten.*')
+//     .where('session_ID', req.params.uuid)
+//     .then((data) => {
+//       res.send(data)
+//     })
+// })
 
 
 if (process.env.NODE_ENV !== 'test') {
