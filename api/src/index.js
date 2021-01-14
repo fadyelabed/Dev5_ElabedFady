@@ -67,6 +67,18 @@ app.post('/gerechten-add', async (req, res) => {
   res.send(result);
 });
 
+app.delete('/gerechten-delete/:uuid', async (req, res) => {
+  const result = await pg
+    .table('gerechten')
+    .where({ uuid: req.params.uuid})
+    .del(['id','uuid', 'gerechten', 'ingredienten', 'keuken', 'created_at','updated_at'])
+    .then((res) => {
+      return res;
+    });
+  console.log(result);
+  res.send(result);
+});
+
 if (process.env.NODE_ENV !== 'test') {
   app.listen(process.env.PORT || 3001, () => console.log(`Listening on port ${process.env.PORT || 3001}`));
 }
