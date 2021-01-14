@@ -32,7 +32,14 @@ app.use(
 app.get('/', (req, res) => {
   res.send('Hello World -- deployed again!')
 })
-
+app.get('/gerechten', async (req, res) => {
+  const result = await pg
+    .select(['uuid', 'gerechten', 'ingredienten','keuken' , 'created_at','updated_at'])
+    .from('gerechten');
+  res.json({
+    res: result,
+  });
+});
 
 app.get('/join', async (req, res) => {
   await DatabaseHelper
@@ -44,21 +51,6 @@ app.get('/join', async (req, res) => {
     })
 
 })
-
-// /**
-// * @param
-// * @returns
-// */
-// app.get('/recept/:uuid', async (req, res) => {
-//   await DatabaseHelper
-//     .table('recepten')
-//     .join('categorisatie', DatabaseHelper.raw('recepten.categorisatie_id::varchar'), DatabaseHelper.raw('categorisatie.uuid::varchar'))
-//     .select('categorisatie.*', 'recepten.*')
-//     .where('session_ID', req.params.uuid)
-//     .then((data) => {
-//       res.send(data)
-//     })
-// })
 
 
 if (process.env.NODE_ENV !== 'test') {
@@ -103,6 +95,7 @@ async function initialiseTables() {
     }
   });
 }
+
 initialiseTables()
 
 module.exports = app
