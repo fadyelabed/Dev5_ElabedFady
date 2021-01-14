@@ -52,6 +52,20 @@ app.get('/join', async (req, res) => {
 
 })
 
+app.post('/gerechten-add', async (req, res) => {
+  const uuid = Helpers.generateUUID();
+  const result = await pg
+
+    .insert({ uuid, gerechten: 'Pizza', ingredienten: 'deeg, tomaat, basilicum, mozzarella', keuken: "Italiaans" },)
+    .table('gerechten')
+    .returning('*')
+    .then((res) => {
+      return res;
+    });
+  console.log('add 1 gerecht entry');
+  console.log(result);
+  res.send(result);
+});
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(process.env.PORT || 3001, () => console.log(`Listening on port ${process.env.PORT || 3001}`));
