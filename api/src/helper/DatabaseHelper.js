@@ -1,18 +1,12 @@
 let fs = require('fs')
-let db = require('knex')({
+const pg = require('knex')({
   client: 'pg',
-  connection: {
-    user: "doadmin",
-    password: "qyouu9w2md8wud3b",
-    host: "test-students-do-user-2476832-0.b.db.ondigitalocean.com",
-    port: 25060,
-    database: "defaultdb",
-    charset: 'utf8',
-    ssl: {
-      ca: fs.readFileSync(__dirname + '/certs/ca-certificate.crt', 'ascii'),
-    },
+  version: '9.6',
+  searchPath: ['knex', 'public'],
+  connection: process.env.PG_CONNECTION_STRING
+    ? process.env.PG_CONNECTION_STRING
+    : 'postgres://example:example@localhost:5432/test',
 
-  },
 
   pool: {
     min: 2,
@@ -25,4 +19,4 @@ let db = require('knex')({
 });
 
 
-module.exports = db
+module.exports = pg
