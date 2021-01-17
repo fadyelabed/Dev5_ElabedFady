@@ -1,6 +1,12 @@
 # Gerechten API
 Een api gebaseerd op gerechten, de ingredienten en keukens ervan.
 
+### Prerequisites
+Install the required packages before running the project. To install jest, simply use this command
+```
+npm i jest
+```
+
 ## Getting Started
 When opening the project, run the project with node with this command in the terminal
 ```
@@ -8,13 +14,6 @@ npm run start
 ```
 You should be able to see the project up and running on localhost port 3001. 
 To see all the entries just head over to "/gerechten"
-
-
-### Prerequisites
-Install the required packages before running the project. To install jest, simply use this command
-```
-npm i jest
-```
 
 ### Connecting to docker & adding/modifying entries to the API
 

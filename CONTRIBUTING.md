@@ -1,14 +1,4 @@
-
-
-# Contributing guidelines
----
-
-// intro
-
-
-VERWIJS OOK NAAR UW CODE OF CONDUCT
-
-
+# Contributing guidelines 
 
 ## Report bugs
 
@@ -17,8 +7,6 @@ VERWIJS OOK NAAR UW CODE OF CONDUCT
 * Include your Error logs
 * Explain the setup
 * include the following
-
-
 
 ```
 OS: 
@@ -34,8 +22,6 @@ what data sending
 
 Bad: endpoint does not work
   
-
-
 ## Suggest new features
 
 * Open a feature request on github with a "enhancement" label
@@ -50,11 +36,7 @@ env file adaption
   * VERBOSE 3
   * ...
 
-welke globals kunnen ze gebruiken
-
 What kind of tests need to be there
-
-Mention development DB
 
 Changelog (how to)
 
@@ -74,21 +56,8 @@ expected log levels:
 | 1 | console.warn | 
 | 0 | console.error |
 
-
-
-
-## Roadmap and vision
-
-I envision....
-
-// mention van een forum
-// Discord
-
-
 ## Get in touch
 
-email
-discord -> 
-github -> label; "question"
+fady.elabed@hotmail.com
 
 
