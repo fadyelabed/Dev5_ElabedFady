@@ -10,10 +10,7 @@ const Helpers = require('./utils/helpers.js');
 const DatabaseHelper = require('./helper/DatabaseHelper');
 const InitialiseDBHelpers = require('./helper/InitialiseDBHelpers')
 const UUIDHelper = require('./helper/UuidHelpers');
-/*
-const AuthHelper = require('./helper/AuthHelper');
-InitialiseDBHelpers.initialiseTables(DatabaseHelper);
-*/
+
 
 const pg = require('knex')({
   client: 'pg',
@@ -56,7 +53,7 @@ app.post('/gerechten-add', async (req, res) => {
   const uuid = Helpers.generateUUID();
   const result = await pg
 
-    .insert({ uuid, gerechten: 'Kapsalon', ingredienten: 'pita, mayo, sla, tomaat, uien, wortels, frietjes, kaas', keuken: "Nederlands" },)
+    .insert({ uuid, gerechten: 'Ratatouille', ingredienten: 'Tomatensaus, aubergine, courgette, paprika, knoflook', keuken: "Frans" },)
     .table('gerechten')
     .returning('*')
     .then((res) => {
